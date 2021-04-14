@@ -1,0 +1,44 @@
+ITEM:
+  SERVER_SELECTOR:
+    MATERIAL: BOOK
+    SLOT: 4
+    NAME: "&6Servers"
+
+GLASS_PANE:
+  MATERIAL: STAINED_GLASS_PANE
+  NAME: " "
+  AMOUNT: 1
+  VALUE: 15
+
+WELCOME_MESSAGE:
+  - "&7&m---------------------------------------"
+  - ""
+  - "&fWelcome to the &a&lServer!"
+  - ""
+  - "&7&l%bullet_point% &aStore: &fstore.server.com"
+  - "&7&l%bullet_point% &aDiscord: &fdiscord.gg/server"
+  - "&7&l%bullet_point% &aTwitter: &ftwitter.com/server"
+  - ""
+  - "&7&m---------------------------------------"
+
+SERVER_SELECTOR:
+  SIZE: 27
+  NAME: "&7Servers"
+  SERVERS:
+    1:
+      SERVER: server
+      MATERIAL: TNT
+      SLOT: 13
+      NAME: "&6&lServer"
+      LORE:
+        - ""
+        - "&7&l%bullet_point% &a&lServer"
+        - ""
+        - "&7%right_arrow% &fClick to join &7%right_arrow%"
+##
+
+SCOREBOARD:
+  TITLE: "&4&lServer &fHub"
+  MIDDLE: "&cdiscord.me/esdevelopment"
+  FOOTER: "&7&ostore.server.com"
+
