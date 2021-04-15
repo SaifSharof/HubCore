@@ -39,6 +39,12 @@ SERVER_SELECTOR:
 
 SCOREBOARD:
   TITLE: "&4&lServer &fHub"
-  MIDDLE: "&cdiscord.me/esdevelopment"
-  FOOTER: "&7&ostore.server.com"
-
+  LINES:
+    - "&7&m-------------------"
+    - "&cOnline"
+    - "{online}"
+    - ""
+    - "&cPing: &f{ping}"
+    - ""
+    - "&7&ostore.server.com"
+    - "&7&m-------------------"
