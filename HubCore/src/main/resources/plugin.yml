@@ -8,3 +8,18 @@ softdepend: [PlaceholderAPI]
 commands:
   hubreload:
     description: Reloads hubcore's config.yml
+  website:
+    description: Sends the server's website
+  store:
+    description: Sends the server's store
+  discord:
+    description: Sends the server's discord
+permissions:
+  hub.command.place:
+    description: Allows you to place blocks
+  hub.command.break:
+    description: Allows you to break blocks
+  hubcore.media:
+    description: Allows you to have access to all media commands (E.G /discord)
+  hubcore.reload:
+    description: Allows you to reload hubcore's files.
