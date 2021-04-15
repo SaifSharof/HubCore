@@ -24,7 +24,7 @@ public class SpawnCommand implements CommandExecutor {
         }
         
         if(HubCore.get().getConfig().getString("Spawn.location") == null){
-            player.sendMessage(CC.translate("&cSpawn no setted"));
+            player.sendMessage(CC.translate("&cThere's no spawn set."));
         }
         
         player.sendMessage(CC.translate(HubCore.get().getConfig().getString("Spawn.send.message")));
