@@ -2,6 +2,9 @@ package com.esdevelopment.hubcore;
 
 import com.esdevelopment.hubcore.commands.ReloadCommand;
 import com.esdevelopment.hubcore.features.*;
+import com.esdevelopment.hubcore.media.DiscordCommand;
+import com.esdevelopment.hubcore.media.StoreCommand;
+import com.esdevelopment.hubcore.media.WebsiteCommand;
 import com.esdevelopment.hubcore.scoreboard.*;
 import com.esdevelopment.hubcore.scoreboard.adapter.*;
 import com.esdevelopment.hubcore.server.*;
@@ -53,6 +56,10 @@ public final class HubCore extends JavaPlugin {
 
     public void setupCommands() {
         getCommand("hubreload").setExecutor(new ReloadCommand());
+        getCommand("website").setExecutor(new WebsiteCommand());
+        getCommand("discord").setExecutor(new DiscordCommand());
+        getCommand("store").setExecutor(new StoreCommand());
+
     }
 
     private void setupBungee() {
