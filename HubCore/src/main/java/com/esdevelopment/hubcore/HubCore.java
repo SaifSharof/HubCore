@@ -1,5 +1,6 @@
 package com.esdevelopment.hubcore;
 
+import com.esdevelopment.hubcore.commands.ReloadCommand;
 import com.esdevelopment.hubcore.features.*;
 import com.esdevelopment.hubcore.scoreboard.*;
 import com.esdevelopment.hubcore.scoreboard.adapter.*;
@@ -27,13 +28,14 @@ public final class HubCore extends JavaPlugin {
         saveDefaultConfig();
         this.setupListeners();
         this.setupBungee();
+        this.setupCommands();
         playerCountThread = new PlayerCountThread();
         playerCountThread.start();
 
         Assemble assemble = new Assemble(this, new ScoreboardAdapter());
 
         assemble.setTicks(2);
-        assemble.setAssembleStyle(AssembleStyle.VIPER);
+        assemble.setAssembleStyle(AssembleStyle.LATEST);
     }
 
     @Override
@@ -47,6 +49,10 @@ public final class HubCore extends JavaPlugin {
                 new ServerSelector(),
                 new DoubleJump()
         ).forEach(listener -> Bukkit.getPluginManager().registerEvents(listener, this));
+    }
+
+    public void setupCommands() {
+        getCommand("hubreload").setExecutor(new ReloadCommand());
     }
 
     private void setupBungee() {
