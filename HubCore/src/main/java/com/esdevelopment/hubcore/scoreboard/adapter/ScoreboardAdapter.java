@@ -23,31 +23,28 @@ public class ScoreboardAdapter implements AssembleAdapter {
     @Override
     public List<String> getLines(Player player) {
         List<String> list = new ArrayList<String>();
-        
+
         if(Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")){
             for(String lines : HubCore.get().getConfig().getStringList("SCOREBOARD.LINES").stream()
-                    
+
                     .map(a -> a.replace("{online}", String.valueOf(PlayerCountThread.PLAYER_COUNT)))
                     .map(a -> a.replace("{ping}", String.valueOf(Ping.getPing(player))))
-                    
+
                     .collect(Collectors.toList())) {
-                
-                        list.add(PlaceholderAPI.setPlaceholders(player, lines));
-                    }
+
+                list.add(PlaceholderAPI.setPlaceholders(player, lines));
+            }
         } else {
-            
-            for(String lines : HubCore.get().getConfig().getStringList("SCOREBOARD.LINES").stream()
-                    
+
+            list.addAll(HubCore.get().getConfig().getStringList("SCOREBOARD.LINES").stream()
+
                     .map(a -> a.replace("{online}", String.valueOf(PlayerCountThread.PLAYER_COUNT)))
                     .map(a -> a.replace("{ping}", String.valueOf(Ping.getPing(player))))
-                    
-                    .collect(Collectors.toList())) {
-                
-                        list.add(lines);
-                    }
-            
+
+                    .collect(Collectors.toList()));
+
         }
-        
+
         return list;
     }
 }
