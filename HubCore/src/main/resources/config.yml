@@ -59,6 +59,6 @@ SCOREBOARD:
     
 Spawn:
     send:
-        message: "&aSending the spawn"
+        message: "&aSending to spawn"
         sound: "PORTAL"
 
