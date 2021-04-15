@@ -52,8 +52,8 @@ public class PlayerListener implements Listener {
             }
         }
 
-        HubCore.get().getConfig().getStringList("WELCOME_MESSAGE").forEach(string -> player.sendMessage(CC.translate(string
-                .replace("%bullet_point%", "•"))));
+        //HubCore.get().getConfig().getStringList("WELCOME_MESSAGE").forEach(string -> player.sendMessage(CC.translate(string
+        //        .replace("%bullet_point%", "•"))));
     }
 
     @EventHandler
