@@ -3,6 +3,8 @@ package com.esdevelopment.hubcore.util;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 
+// Credits to thatkawaiisam
+
 public class LocationUtil {
 
     //Translate a Location to a String
