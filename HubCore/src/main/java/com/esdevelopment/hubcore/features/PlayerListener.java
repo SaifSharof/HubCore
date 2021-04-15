@@ -86,7 +86,7 @@ public class PlayerListener implements Listener {
     }
     
     @EventHandler
-    public void EntityDamageByEntity(EntityDamageByEntityEvent event){
+    public void entityDamageByEntity(EntityDamageByEntityEvent event){
         event.setCancelled(true);
     }
 
@@ -102,12 +102,12 @@ public class PlayerListener implements Listener {
     }
 
     @EventHandler
-    public void pickup(PlayerPickupItemEvent event) {
+    public void playerPickupItem(PlayerPickupItemEvent event) {
         event.setCancelled(true);
     }
 
     @EventHandler
-    public void frop(PlayerDropItemEvent event) {
+    public void playerDropItem(PlayerDropItemEvent event) {
         if(!event.getPlayer().getGameMode().equals(GameMode.CREATIVE))
             event.setCancelled(true);
     }
