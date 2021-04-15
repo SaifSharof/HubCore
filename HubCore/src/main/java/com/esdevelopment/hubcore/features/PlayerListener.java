@@ -1,7 +1,10 @@
-package com.esdevelopment.hubcore.features;
+ackage com.esdevelopment.hubcore.features;
 
 import com.esdevelopment.hubcore.HubCore;
 import com.esdevelopment.hubcore.util.*;
+import me.clip.placeholderapi.PlaceholderAPI;
+import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -12,6 +15,8 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.player.PlayerBucketEmptyEvent;
+import org.bukkit.event.player.PlayerBucketFillEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
@@ -35,6 +40,18 @@ public class PlayerListener implements Listener {
         player.getInventory().setItem(HubCore.get().getConfig().getInt("ITEM.SERVER_SELECTOR.SLOT"), server_selector);
 
         for(int i = 0; i < 100; i++) { player.sendMessage(""); }
+        
+        if(Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")){
+            for(String list : HubCore.get().getConfig().getStringList("")){
+                player.sendMessage(PlaceholderAPI.setPlaceholders(player, CC.translate(list)
+                .replace("%bullet_point%", "•")));
+            }
+        } else {
+            for(String list : HubCore.get().getConfig().getStringList("")){
+                player.sendMessage(CC.translate(list).replace("%bullet_point%", "•"));
+            }
+        }
+
         HubCore.get().getConfig().getStringList("WELCOME_MESSAGE").forEach(string -> player.sendMessage(CC.translate(string
                 .replace("%bullet_point%", "•"))));
     }
@@ -66,7 +83,8 @@ public class PlayerListener implements Listener {
 
     @EventHandler
     public void onClick(InventoryClickEvent event) {
-        event.setCancelled(true);
+        if (!event.getWhoClicked().getGameMode().equals(GameMode.CREATIVE)) 
+            event.setCancelled(true);
     }
 
     @EventHandler
@@ -76,13 +94,14 @@ public class PlayerListener implements Listener {
 
     @EventHandler
     public void onDrop(PlayerDropItemEvent event) {
+        if(!event.getPlayer().getGameMode().equals(GameMode.CREATIVE))
         event.setCancelled(true);
     }
 
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
         Player player = event.getPlayer();
-        if(!player.hasPermission("hub.command.place")) {
+        if(!player.hasPermission("hub.command.place") || !event.getPlayer().getGameMode().equals(GameMode.CREATIVE)) {
             event.setCancelled(true);
         }
     }
@@ -90,9 +109,18 @@ public class PlayerListener implements Listener {
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
-        if(!player.hasPermission("hub.command.break")) {
+        if(!player.hasPermission("hub.command.break") || !event.getPlayer().getGameMode().equals(GameMode.CREATIVE)) {
             event.setCancelled(true);
         }
     }
-}
+    
+    @EventHandler
+    public void bucketFill(PlayerBucketEmptyEvent event) {
+        if (!event.getPlayer().getGameMode().equals(GameMode.CREATIVE)) event.setCancelled(true);
+    }
 
+    @EventHandler
+    public void bucketEmpty(PlayerBucketFillEvent event) {
+        if (!event.getPlayer().getGameMode().equals(GameMode.CREATIVE)) event.setCancelled(true);
+    }
+}
