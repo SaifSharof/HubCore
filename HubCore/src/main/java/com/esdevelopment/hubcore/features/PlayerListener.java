@@ -1,4 +1,4 @@
-ackage com.esdevelopment.hubcore.features;
+package com.esdevelopment.hubcore.features;
 
 import com.esdevelopment.hubcore.HubCore;
 import com.esdevelopment.hubcore.util.*;
@@ -40,11 +40,11 @@ public class PlayerListener implements Listener {
         player.getInventory().setItem(HubCore.get().getConfig().getInt("ITEM.SERVER_SELECTOR.SLOT"), server_selector);
 
         for(int i = 0; i < 100; i++) { player.sendMessage(""); }
-        
+
         if(Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")){
-            for(String list : HubCore.get().getConfig().getStringList("")){
+            for(String list : HubCore.get().getConfig().getStringList("WELCOME_MESSAGE")){
                 player.sendMessage(PlaceholderAPI.setPlaceholders(player, CC.translate(list)
-                .replace("%bullet_point%", "•")));
+                        .replace("%bullet_point%", "•")));
             }
         } else {
             for(String list : HubCore.get().getConfig().getStringList("")){
@@ -83,7 +83,7 @@ public class PlayerListener implements Listener {
 
     @EventHandler
     public void onClick(InventoryClickEvent event) {
-        if (!event.getWhoClicked().getGameMode().equals(GameMode.CREATIVE)) 
+        if (!event.getWhoClicked().getGameMode().equals(GameMode.CREATIVE))
             event.setCancelled(true);
     }
 
@@ -95,7 +95,7 @@ public class PlayerListener implements Listener {
     @EventHandler
     public void onDrop(PlayerDropItemEvent event) {
         if(!event.getPlayer().getGameMode().equals(GameMode.CREATIVE))
-        event.setCancelled(true);
+            event.setCancelled(true);
     }
 
     @EventHandler
@@ -113,7 +113,7 @@ public class PlayerListener implements Listener {
             event.setCancelled(true);
         }
     }
-    
+
     @EventHandler
     public void bucketFill(PlayerBucketEmptyEvent event) {
         if (!event.getPlayer().getGameMode().equals(GameMode.CREATIVE)) event.setCancelled(true);
