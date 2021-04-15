@@ -1,6 +1,0 @@
-name: HubCore
-version: 0.1
-main: com.esdevelopment.hubcore.HubCore
-api-version: 1.13
-authors: [ SaifSharof ]
-description: HubCore for your server !
