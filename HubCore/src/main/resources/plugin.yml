@@ -8,16 +8,16 @@ softdepend: [PlaceholderAPI]
 commands:
   hubreload:
     description: Reloads hubcore's config.yml
+  setspawn:
+    description: Set's the spawn
+  spawn:
+    description: Teleports you to the set spawn.
   website:
     description: Sends the server's website
   store:
     description: Sends the server's store
   discord:
     description: Sends the server's discord
-  setspawn:
-    description: set spawn
-  spawn:
-    description: send spawn
 permissions:
   hub.command.place:
     description: Allows you to place blocks
@@ -27,3 +27,8 @@ permissions:
     description: Allows you to have access to all media commands (E.G /discord)
   hubcore.reload:
     description: Allows you to reload hubcore's files.
+  hubcore.setspawn:
+    description: Allows you to /setspawn
+  hubcore.spawn:
+    description: Allows you to teleport to spawn
+
