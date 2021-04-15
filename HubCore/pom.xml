@@ -6,7 +6,7 @@
 
     <groupId>com.esdevelopment</groupId>
     <artifactId>HubCore</artifactId>
-    <version>0.1</version>
+    <version>0.2</version>
     <packaging>jar</packaging>
 
     <name>HubCore</name>
@@ -89,7 +89,7 @@
             <groupId>me.clip</groupId>
             <artifactId>placeholderapi</artifactId>
             <version>2.10.9</version>
-           <scope>provided</scope>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>
