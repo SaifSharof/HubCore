@@ -27,6 +27,7 @@ public class SpawnCommand implements CommandExecutor {
             player.sendMessage(CC.translate("&cThere's no spawn set."));
         }
         
+        player.teleport(LocationUtil.parseToLocation(HubCore.get().getConfig().getString("Spawn.location")));
         player.sendMessage(CC.translate(HubCore.get().getConfig().getString("Spawn.send.message")));
         player.playSound(player.getLocation(),
                 Sound.valueOf(HubCore.get().getConfig().getString("Spawn.send.sound")),
