@@ -56,3 +56,9 @@ SCOREBOARD:
     - ""
     - "&7&ostore.server.com"
     - "&7&m-------------------"
+    
+Spawn:
+    send:
+        message: "&aSending the spawn"
+        sound: "PORTAL"
+
