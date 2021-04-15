@@ -28,7 +28,7 @@ public class SetSpawnCommand implements CommandExecutor {
         Location location = player.getLocation();
         
         HubCore.get().getConfig().set("Spawn.location", LocationUtil.parseToString(location));
-        player.sendMessage(CC.translate("&aSpawn location seted."));
+        player.sendMessage(CC.translate("&aSpawn location has been set."));
         player.playSound(location, Sound.PORTAL, 1.0f, 1.0f);
         
         return false;
