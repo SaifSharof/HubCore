@@ -1,36 +1,22 @@
 package com.esdevelopment.hubcore.features;
 
-import com.esdevelopment.hubcore.HubCore;
+import com.esdevelopment.hubcore.*;
 import com.esdevelopment.hubcore.util.*;
 import me.clip.placeholderapi.PlaceholderAPI;
-import org.bukkit.Bukkit;
-import org.bukkit.GameMode;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.block.BlockPlaceEvent;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.event.entity.EntityExplodeEvent;
-import org.bukkit.event.entity.EntitySpawnEvent;
-import org.bukkit.event.entity.FoodLevelChangeEvent;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.player.PlayerBucketEmptyEvent;
-import org.bukkit.event.player.PlayerBucketFillEvent;
-import org.bukkit.event.player.PlayerDropItemEvent;
-import org.bukkit.event.player.PlayerFishEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerPickupItemEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.event.weather.WeatherChangeEvent;
+import org.bukkit.event.*;
+import org.bukkit.event.block.*;
+import org.bukkit.event.entity.*;
+import org.bukkit.event.inventory.*;
+import org.bukkit.event.player.*;
+import org.bukkit.event.weather.*;
 import org.bukkit.inventory.ItemStack;
 
 public class PlayerListener implements Listener {
 
     @EventHandler
-    public void playerJoin(PlayerJoinEvent event) {
+    public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         event.setJoinMessage(null);
 
@@ -53,67 +39,54 @@ public class PlayerListener implements Listener {
             for(String list : HubCore.get().getConfig().getStringList("")){
                 player.sendMessage(CC.translate(list).replace("%bullet_point%", "•"));
             }
-            
-            if(HubCore.get().getConfig().getString("Spawn.location") == null){
-                Bukkit.getConsoleSender().sendMessage(CC.translate("&7[HUB CORE] &cSPAWN LOCATION NO SETED"));
-            }
-            
-            player.teleport(LocationUtil.parseToLocation(HubCore.get().getConfig().getString("Spawn.location")));
         }
 
-        //HubCore.get().getConfig().getStringList("WELCOME_MESSAGE").forEach(string -> player.sendMessage(CC.translate(string
-        //        .replace("%bullet_point%", "•"))));
     }
 
     @EventHandler
-    public void playerQuit(PlayerQuitEvent event) {
+    public void onQuit(PlayerQuitEvent event) {
         event.setQuitMessage(null);
     }
 
     @EventHandler
-    public void weatherChange(WeatherChangeEvent event) {
+    public void onWeather(WeatherChangeEvent event) {
         event.setCancelled(true);
     }
 
     @EventHandler
-    public void foodLevelChange(FoodLevelChangeEvent event) {
+    public void onFood(FoodLevelChangeEvent event) {
         event.setCancelled(true);
     }
 
     @EventHandler
-    public void entityDamage(EntityDamageEvent event) {
-        event.setCancelled(true);
-    }
-    
-    @EventHandler
-    public void entityDamageByEntity(EntityDamageByEntityEvent event){
+    public void onDamage(EntityDamageEvent event) {
         event.setCancelled(true);
     }
 
     @EventHandler
-    public void entitySpawn(EntitySpawnEvent event) {
+    public void onEntitySpawn(EntitySpawnEvent event) {
         event.setCancelled(true);
     }
 
     @EventHandler
-    public void inventoryClick(InventoryClickEvent event) {
+    public void onClick(InventoryClickEvent event) {
         if (!event.getWhoClicked().getGameMode().equals(GameMode.CREATIVE))
             event.setCancelled(true);
     }
 
     @EventHandler
-    public void playerPickupItem(PlayerPickupItemEvent event) {
+    public void onPickup(PlayerPickupItemEvent event) {
         event.setCancelled(true);
     }
 
     @EventHandler
-    public void playerDropItem(PlayerDropItemEvent event) {
+    public void onDrop(PlayerDropItemEvent event) {
         if(!event.getPlayer().getGameMode().equals(GameMode.CREATIVE))
             event.setCancelled(true);
     }
 
     @EventHandler
-    public void blockPlace(BlockPlaceEvent event) {
+    public void onBlockPlace(BlockPlaceEvent event) {
         Player player = event.getPlayer();
         if(!player.hasPermission("hub.command.place") || !event.getPlayer().getGameMode().equals(GameMode.CREATIVE)) {
             event.setCancelled(true);
@@ -121,7 +94,7 @@ public class PlayerListener implements Listener {
     }
 
     @EventHandler
-    public void blockBreak(BlockBreakEvent event) {
+    public void onBlockBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
         if(!player.hasPermission("hub.command.break") || !event.getPlayer().getGameMode().equals(GameMode.CREATIVE)) {
             event.setCancelled(true);
@@ -137,14 +110,13 @@ public class PlayerListener implements Listener {
     public void bucketEmpty(PlayerBucketFillEvent event) {
         if (!event.getPlayer().getGameMode().equals(GameMode.CREATIVE)) event.setCancelled(true);
     }
-    
     @EventHandler
     public void playerFish(PlayerFishEvent event){
         event.setCancelled(true);
     }
-    
+
     @EventHandler
-    public void entityExplode(EntityExplodeEvent  event){
+    public void entityExplode(EntityExplodeEvent event){
         event.setCancelled(true);
     }
 }
