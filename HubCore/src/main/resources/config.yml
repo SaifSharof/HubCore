@@ -10,6 +10,12 @@ GLASS_PANE:
   AMOUNT: 1
   VALUE: 15
 
+## MEDIA LINKS
+MEDIA_LINKS:
+  WEBSITE: "&7&l%bullet_point% &aWebsite: &fwww.server.com"
+  DISCORD: "&7&l%bullet_point% &aDiscord: &fdiscord.gg/server"
+  STORE: "&7&l%bullet_point% &aStore: &fstore.server.com"
+## WELCOME MESSAGE (PAPI SUPPORTED)
 WELCOME_MESSAGE:
   - "&7&m---------------------------------------"
   - ""
@@ -21,6 +27,7 @@ WELCOME_MESSAGE:
   - ""
   - "&7&m---------------------------------------"
 
+## SELECTOR CONFIGURATION (PAPI SUPPORTED)
 SERVER_SELECTOR:
   SIZE: 27
   NAME: "&7Servers"
@@ -35,7 +42,8 @@ SERVER_SELECTOR:
         - "&7&l%bullet_point% &a&lServer"
         - ""
         - "&7%right_arrow% &fClick to join &7%right_arrow%"
-##
+
+## SCOREBOARD CONFIGURATION (PAPI SUPPORTED)
 
 SCOREBOARD:
   TITLE: "&4&lServer &fHub"
