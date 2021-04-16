@@ -1,3 +1,9 @@
+#################################################
+#            HubCore Configuration              #
+#         Discord: discord.me/esdevelopment     #
+#################################################
+
+
 ITEM:
   SERVER_SELECTOR:
     MATERIAL: BOOK
@@ -56,11 +62,11 @@ SCOREBOARD:
     - ""
     - "&7&ostore.server.com"
     - "&7&m-------------------"
-    
+
 Spawn:
-    send:
-        message: "&aSending to spawn"
-        sound: "PORTAL"
-    void:
-        enable: true
-        message: "&aSending to spawn"
+  send:
+    message: "&aSending you to spawn"
+    sound: "PORTAL"
+  void:
+    enable: true
+    message: "&aSending to spawn"
