@@ -132,10 +132,10 @@ public class PlayerListener implements Listener {
     }
     
     @EventHandler
-    public void onMove(PlayerMoveEvent event) {
+    public void onVoidTP(PlayerMoveEvent event) {
         Player player = event.getPlayer();
 
-            if (player.getLocation().getBlockY() < 0) {
+            if (player.getLocation().getBlockY() < config.getInt("Spawn.level")) {
                 
             if(LocationUtil.parseToLocation(config.getString("Spawn.location")) != null){
                 player.teleport(LocationUtil.parseToLocation(config.getString("Spawn.location")));
