@@ -38,14 +38,9 @@ public final class HubCore extends JavaPlugin {
         playerCountThread.start();
 
         Assemble assemble = new Assemble(this, new ScoreboardAdapter());
-
+        assemble.setup();
         assemble.setTicks(2);
         assemble.setAssembleStyle(AssembleStyle.LATEST);
-    }
-
-    @Override
-    public void onDisable() {
-
     }
 
     private void setupListeners() {
@@ -75,6 +70,5 @@ public final class HubCore extends JavaPlugin {
     public static HubCore get() {
         return getPlugin(HubCore.class);
     }
-
 
 }
