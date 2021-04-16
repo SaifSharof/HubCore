@@ -1,9 +1,8 @@
 name: HubCore
 version: ${project.version}
 main: com.esdevelopment.hubcore.HubCore
-api-version: 1.13
-authors: [ SaifSharof ]
-description: HubCore for your server !
+author: [SaifSharof]
+description: HubCore for your server!
 softdepend: [PlaceholderAPI]
 commands:
   hubreload:
