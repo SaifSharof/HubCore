@@ -69,4 +69,5 @@ Spawn:
     sound: "PORTAL"
   void:
     enable: true
+    level: 0
     message: "&aSending to spawn"
