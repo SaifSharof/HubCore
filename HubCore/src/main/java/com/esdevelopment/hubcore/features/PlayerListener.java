@@ -26,12 +26,13 @@ public class PlayerListener implements Listener {
         player.getInventory().clear();
         player.getInventory().setArmorContents(null);
         
-        if(LocationUtil.parseToLocation(config.getString("Spawn.location")) == null){
+        if(LocationUtil.parseToLocation(config.getString("Spawn.location")) != null){
+            player.teleport(LocationUtil.parseToLocation(config.getString("Spawn.location")));
+            
+        } else {
             Bukkit.getConsoleSender().sendMessage(CC.translate("&cThere's no spawn set."));
         }
-        
-        player.teleport(LocationUtil.parseToLocation(config.getString("Spawn.location")));
-        
+
         ItemStack server_selector = new ItemBuilder(Material.getMaterial(config.getString("ITEM.SERVER_SELECTOR.MATERIAL")))
                 .setName(CC.translate(HubCore.get().getConfig().getString("ITEM.SERVER_SELECTOR.NAME")))
                 .create();
@@ -136,9 +137,12 @@ public class PlayerListener implements Listener {
 
             if (player.getLocation().getBlockY() < 0) {
                 
-                if(LocationUtil.parseToLocation(config.getString("Spawn.location")) == null){
-                    Bukkit.getConsoleSender().sendMessage(CC.translate("&cThere's no spawn set."));
-                }
+            if(LocationUtil.parseToLocation(config.getString("Spawn.location")) != null){
+                player.teleport(LocationUtil.parseToLocation(config.getString("Spawn.location")));
+
+            } else {
+                Bukkit.getConsoleSender().sendMessage(CC.translate("&cThere's no spawn set."));
+            }
                 
                 if(config.getBoolean("Spawn.void.enable")){
                     player.teleport(LocationUtil.parseToLocation(config.getString("Spawn.location")));
