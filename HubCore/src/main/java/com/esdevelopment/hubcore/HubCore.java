@@ -40,7 +40,7 @@ public final class HubCore extends JavaPlugin {
         Assemble assemble = new Assemble(this, new ScoreboardAdapter());
         assemble.setup();
         assemble.setTicks(2);
-        assemble.setAssembleStyle(AssembleStyle.LATEST);
+        assemble.setAssembleStyle(AssembleStyle.VIPER);
     }
 
     private void setupListeners() {
@@ -66,9 +66,7 @@ public final class HubCore extends JavaPlugin {
         getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", new BungeecordListeners());
     }
 
-
     public static HubCore get() {
         return getPlugin(HubCore.class);
     }
-
 }
