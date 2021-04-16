@@ -61,4 +61,6 @@ Spawn:
     send:
         message: "&aSending to spawn"
         sound: "PORTAL"
-
+    void:
+        enable: true
+        message: "&aSending to spawn"
