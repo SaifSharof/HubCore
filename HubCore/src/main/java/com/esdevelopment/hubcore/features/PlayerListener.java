@@ -4,6 +4,7 @@ import com.esdevelopment.hubcore.*;
 import com.esdevelopment.hubcore.util.*;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.*;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.*;
 import org.bukkit.event.block.*;
@@ -15,6 +16,8 @@ import org.bukkit.inventory.ItemStack;
 
 public class PlayerListener implements Listener {
 
+    FileConfiguration config = HubCore.get().getConfig();
+    
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
@@ -22,8 +25,14 @@ public class PlayerListener implements Listener {
 
         player.getInventory().clear();
         player.getInventory().setArmorContents(null);
-
-        ItemStack server_selector = new ItemBuilder(Material.getMaterial(HubCore.get().getConfig().getString("ITEM.SERVER_SELECTOR.MATERIAL")))
+        
+        if(config.getString("Spawn.location") == null){
+            player.sendMessage(CC.translate("&cThere's no spawn set."));
+        }
+        
+        player.teleport(LocationUtil.parseToLocation(config.getString("Spawn.location")));
+        
+        ItemStack server_selector = new ItemBuilder(Material.getMaterial(config.getString("ITEM.SERVER_SELECTOR.MATERIAL")))
                 .setName(CC.translate(HubCore.get().getConfig().getString("ITEM.SERVER_SELECTOR.NAME")))
                 .create();
         player.getInventory().setItem(HubCore.get().getConfig().getInt("ITEM.SERVER_SELECTOR.SLOT"), server_selector);
@@ -31,12 +40,12 @@ public class PlayerListener implements Listener {
         for(int i = 0; i < 100; i++) { player.sendMessage(""); }
 
         if(Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")){
-            for(String list : HubCore.get().getConfig().getStringList("WELCOME_MESSAGE")){
+            for(String list : config.getStringList("WELCOME_MESSAGE")){
                 player.sendMessage(PlaceholderAPI.setPlaceholders(player, CC.translate(list)
                         .replace("%bullet_point%", "•")));
             }
         } else {
-            for(String list : HubCore.get().getConfig().getStringList("")){
+            for(String list : config.getStringList("WELCOME_MESSAGE")){
                 player.sendMessage(CC.translate(list).replace("%bullet_point%", "•"));
             }
         }
@@ -110,6 +119,7 @@ public class PlayerListener implements Listener {
     public void bucketEmpty(PlayerBucketFillEvent event) {
         if (!event.getPlayer().getGameMode().equals(GameMode.CREATIVE)) event.setCancelled(true);
     }
+    
     @EventHandler
     public void playerFish(PlayerFishEvent event){
         event.setCancelled(true);
@@ -119,4 +129,21 @@ public class PlayerListener implements Listener {
     public void entityExplode(EntityExplodeEvent event){
         event.setCancelled(true);
     }
+    
+    @EventHandler
+    public void onMove(PlayerMoveEvent event) {
+        Player player = event.getPlayer();
+
+            if (player.getLocation().getBlockY() < 0) {
+                
+                if(HubCore.get().getConfig().getString("Spawn.location") == null){
+                    player.sendMessage(CC.translate("&cThere's no spawn set."));
+                }
+                
+                if(config.getBoolean("Spawn")){
+                    player.teleport(LocationUtil.parseToLocation(config.getString("Spawn.location")));
+                    player.sendMessage(CC.translate(config.getString("Spawn.message")));
+                }
+            }   
+        }
 }
