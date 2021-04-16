@@ -3,13 +3,17 @@ package com.esdevelopment.hubcore.commands;
 import com.esdevelopment.hubcore.HubCore;
 import com.esdevelopment.hubcore.util.CC;
 import com.esdevelopment.hubcore.util.LocationUtil;
+import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 public class SpawnCommand implements CommandExecutor {
+    
+    FileConfiguration config = HubCore.get().getConfig();
     
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -24,14 +28,17 @@ public class SpawnCommand implements CommandExecutor {
             sender.sendMessage(CC.translate("&cNo Permission."));
         }
         
-        if(LocationUtil.parseToLocation(HubCore.get().getConfig().getString("Spawn.location")) == null){
-            player.sendMessage(CC.translate("&cThere's no spawn set."));
+        if(LocationUtil.parseToLocation(config.getString("Spawn.location")) != null){
+            player.teleport(LocationUtil.parseToLocation(config.getString("Spawn.location")));
+            
+        } else {
+            Bukkit.getConsoleSender().sendMessage(CC.translate("&cThere's no spawn set."));
         }
         
-        player.teleport(LocationUtil.parseToLocation(HubCore.get().getConfig().getString("Spawn.location")));
-        player.sendMessage(CC.translate(HubCore.get().getConfig().getString("Spawn.send.message")));
+        player.teleport(LocationUtil.parseToLocation(config.getString("Spawn.location")));
+        player.sendMessage(CC.translate(config.getString("Spawn.send.message")));
         player.playSound(player.getLocation(),
-                Sound.valueOf(HubCore.get().getConfig().getString("Spawn.send.sound")),
+                Sound.valueOf(config.getString("Spawn.send.sound")),
                 1.0f,
                 1.0f);
         
