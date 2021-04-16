@@ -2,6 +2,7 @@ package com.esdevelopment.hubcore.commands;
 
 import com.esdevelopment.hubcore.HubCore;
 import com.esdevelopment.hubcore.util.CC;
+import com.esdevelopment.hubcore.util.LocationUtil;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -23,7 +24,7 @@ public class SpawnCommand implements CommandExecutor {
             sender.sendMessage(CC.translate("&cNo Permission."));
         }
         
-        if(HubCore.get().getConfig().getString("Spawn.location") == null){
+        if(LocationUtil.parseToLocation(HubCore.get().getConfig().getString("Spawn.location")) == null){
             player.sendMessage(CC.translate("&cThere's no spawn set."));
         }
         
