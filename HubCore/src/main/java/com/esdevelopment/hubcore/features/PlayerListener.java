@@ -26,8 +26,8 @@ public class PlayerListener implements Listener {
         player.getInventory().clear();
         player.getInventory().setArmorContents(null);
         
-        if(config.getString("Spawn.location") == null){
-            player.sendMessage(CC.translate("&cThere's no spawn set."));
+        if(LocationUtil.parseToLocation(config.getString("Spawn.location")) == null){
+            Bukkit.getConsoleSender().sendMessage(CC.translate("&cThere's no spawn set."));
         }
         
         player.teleport(LocationUtil.parseToLocation(config.getString("Spawn.location")));
@@ -136,11 +136,11 @@ public class PlayerListener implements Listener {
 
             if (player.getLocation().getBlockY() < 0) {
                 
-                if(HubCore.get().getConfig().getString("Spawn.location") == null){
-                    player.sendMessage(CC.translate("&cThere's no spawn set."));
+                if(LocationUtil.parseToLocation(config.getString("Spawn.location")) == null){
+                    Bukkit.getConsoleSender().sendMessage(CC.translate("&cThere's no spawn set."));
                 }
                 
-                if(config.getBoolean("Spawn")){
+                if(config.getBoolean("Spawn.void.enable")){
                     player.teleport(LocationUtil.parseToLocation(config.getString("Spawn.location")));
                     player.sendMessage(CC.translate(config.getString("Spawn.message")));
                 }
