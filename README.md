@@ -1,6 +1,5 @@
-HubCore
-An Advanced HubCore for your server or any large network
-Discord: discord.me/esdevelopment
+###HubCore
+
 ![image](https://user-images.githubusercontent.com/67561225/115079778-52d05e80-9ec7-11eb-8732-40cf730e7b8e.png)
 ![image](https://user-images.githubusercontent.com/67561225/115079789-56fc7c00-9ec7-11eb-82e0-f6002048b3a2.png)
 ![image](https://user-images.githubusercontent.com/67561225/115079796-595ed600-9ec7-11eb-8a12-3ea98e613e59.png)
