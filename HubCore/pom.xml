@@ -6,7 +6,7 @@
 
     <groupId>com.esdevelopment</groupId>
     <artifactId>HubCore</artifactId>
-    <version>0.2</version>
+    <version>0.5</version>
     <packaging>jar</packaging>
 
     <name>HubCore</name>
