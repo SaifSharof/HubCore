@@ -17,7 +17,7 @@ import org.bukkit.inventory.ItemStack;
 public class PlayerListener implements Listener {
 
     FileConfiguration config = HubCore.get().getConfig();
-    
+
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
@@ -25,10 +25,10 @@ public class PlayerListener implements Listener {
 
         player.getInventory().clear();
         player.getInventory().setArmorContents(null);
-        
+
         if(LocationUtil.parseToLocation(config.getString("Spawn.location")) != null){
             player.teleport(LocationUtil.parseToLocation(config.getString("Spawn.location")));
-            
+
         } else {
             Bukkit.getConsoleSender().sendMessage(CC.translate("&cThere's no spawn set."));
         }
@@ -120,7 +120,7 @@ public class PlayerListener implements Listener {
     public void bucketEmpty(PlayerBucketFillEvent event) {
         if (!event.getPlayer().getGameMode().equals(GameMode.CREATIVE)) event.setCancelled(true);
     }
-    
+
     @EventHandler
     public void playerFish(PlayerFishEvent event){
         event.setCancelled(true);
@@ -130,24 +130,24 @@ public class PlayerListener implements Listener {
     public void entityExplode(EntityExplodeEvent event){
         event.setCancelled(true);
     }
-    
+
     @EventHandler
-    public void onVoidTP(PlayerMoveEvent event) {
+    public void onMove(PlayerMoveEvent event) {
         Player player = event.getPlayer();
 
-            if (player.getLocation().getBlockY() < config.getInt("Spawn.void.level")) {
-                
+        if (player.getLocation().getBlockY() < 0) {
+
             if(LocationUtil.parseToLocation(config.getString("Spawn.location")) != null){
                 player.teleport(LocationUtil.parseToLocation(config.getString("Spawn.location")));
 
             } else {
                 Bukkit.getConsoleSender().sendMessage(CC.translate("&cThere's no spawn set."));
             }
-                
-                if(config.getBoolean("Spawn.void.enable")){
-                    player.teleport(LocationUtil.parseToLocation(config.getString("Spawn.location")));
-                    player.sendMessage(CC.translate(config.getString("Spawn.message")));
-                }
-            }   
+
+            if(config.getBoolean("Spawn.void.enable")){
+                player.teleport(LocationUtil.parseToLocation(config.getString("Spawn.location")));
+                player.sendMessage(CC.translate(config.getString("Spawn.send.message")));
+            }
         }
+    }
 }
