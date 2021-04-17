@@ -1,7 +1,7 @@
 name: HubCore
 version: ${project.version}
 main: com.esdevelopment.hubcore.HubCore
-author: [SaifSharof]
+author: SaifSharof
 description: HubCore for your server!
 softdepend: [PlaceholderAPI]
 commands:
@@ -17,6 +17,10 @@ commands:
     description: Sends the server's store
   discord:
     description: Sends the server's discord
+  ping:
+    description: Tells you your ping
+
+
 permissions:
   hub.command.place:
     description: Allows you to place blocks
@@ -30,4 +34,6 @@ permissions:
     description: Allows you to /setspawn
   hubcore.spawn:
     description: Allows you to teleport to spawn
+  hubcore.ping:
+    description: Sends the player their ping
 
