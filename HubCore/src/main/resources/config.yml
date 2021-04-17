@@ -16,6 +16,15 @@ GLASS_PANE:
   AMOUNT: 1
   VALUE: 15
 
+#### Ping Command (Not PAPI Supported) ####
+
+
+
+###
+SETTINGS:
+  ALWAYS_SUNNY: true
+  PING_MESSAGE: "&cYour ping: &f{ping}"
+
 ## MEDIA LINKS
 MEDIA_LINKS:
   WEBSITE: "&7&l%bullet_point% &aWebsite: &fwww.server.com"
@@ -69,5 +78,4 @@ Spawn:
     sound: "PORTAL"
   void:
     enable: true
-    level: 0
-    message: "&aSending to spawn"
+    message: "&aSending you to spawn"
