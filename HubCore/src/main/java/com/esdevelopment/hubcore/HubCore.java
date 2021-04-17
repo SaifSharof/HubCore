@@ -1,20 +1,16 @@
 package com.esdevelopment.hubcore;
 
-import com.esdevelopment.hubcore.commands.ReloadCommand;
-import com.esdevelopment.hubcore.commands.SetSpawnCommand;
-import com.esdevelopment.hubcore.commands.SpawnCommand;
+import com.esdevelopment.hubcore.commands.*;
 import com.esdevelopment.hubcore.features.*;
-import com.esdevelopment.hubcore.media.DiscordCommand;
-import com.esdevelopment.hubcore.media.StoreCommand;
-import com.esdevelopment.hubcore.media.WebsiteCommand;
+import com.esdevelopment.hubcore.media.*;
 import com.esdevelopment.hubcore.scoreboard.*;
 import com.esdevelopment.hubcore.scoreboard.adapter.*;
 import com.esdevelopment.hubcore.server.*;
 import com.esdevelopment.hubcore.util.*;
-import org.bukkit.Bukkit;
-import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.*;
+import org.bukkit.plugin.java.*;
 
-import java.util.Arrays;
+import java.util.*;
 
 public final class HubCore extends JavaPlugin {
 
@@ -40,13 +36,21 @@ public final class HubCore extends JavaPlugin {
         Assemble assemble = new Assemble(this, new ScoreboardAdapter());
         assemble.setup();
         assemble.setTicks(2);
-        assemble.setAssembleStyle(AssembleStyle.VIPER);
+        assemble.setAssembleStyle(AssembleStyle.LATEST);
+
+        if (getConfig().getBoolean("SETTINGS.ALWAYS_SUNNY")) {
+            for(World world : this.getServer().getWorlds()) {
+                world.setWeatherDuration(0);
+            }
+        }
     }
+
 
     private void setupListeners() {
         Arrays.asList(
                 new PlayerListener(),
                 new ServerSelector(),
+                new AlwaysDay(),
                 new DoubleJump()
         ).forEach(listener -> Bukkit.getPluginManager().registerEvents(listener, this));
     }
@@ -58,6 +62,7 @@ public final class HubCore extends JavaPlugin {
         getCommand("website").setExecutor(new WebsiteCommand());
         getCommand("discord").setExecutor(new DiscordCommand());
         getCommand("store").setExecutor(new StoreCommand());
+        getCommand("ping").setExecutor(new PingCommand());
 
     }
 
@@ -69,4 +74,5 @@ public final class HubCore extends JavaPlugin {
     public static HubCore get() {
         return getPlugin(HubCore.class);
     }
+
 }
