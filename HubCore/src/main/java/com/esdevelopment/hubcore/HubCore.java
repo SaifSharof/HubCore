@@ -12,7 +12,8 @@ import org.bukkit.plugin.java.*;
 
 import java.util.*;
 
-public final class HubCore extends JavaPlugin {
+@Getter
+public class HubCore extends JavaPlugin {
 
     private PlayerCountThread playerCountThread;
 
@@ -26,7 +27,7 @@ public final class HubCore extends JavaPlugin {
         getServer().getConsoleSender().sendMessage(CC.translate("&aHubCore loaded successfully !"));
         getServer().getConsoleSender().sendMessage(CC.translate("&fSupport Link: &bdiscord.me/esdevelopment"));
         getServer().getConsoleSender().sendMessage(CC.translate("&b&m------------------"));
-        saveDefaultConfig();
+        this.saveDefaultConfig();
         this.setupListeners();
         this.setupBungee();
         this.setupCommands();
@@ -34,7 +35,6 @@ public final class HubCore extends JavaPlugin {
         playerCountThread.start();
 
         Assemble assemble = new Assemble(this, new ScoreboardAdapter());
-        assemble.setup();
         assemble.setTicks(2);
         assemble.setAssembleStyle(AssembleStyle.LATEST);
 
@@ -55,7 +55,7 @@ public final class HubCore extends JavaPlugin {
         ).forEach(listener -> Bukkit.getPluginManager().registerEvents(listener, this));
     }
 
-    public void setupCommands() {
+    private void setupCommands() {
         getCommand("hubreload").setExecutor(new ReloadCommand());
         getCommand("setspawn").setExecutor(new SetSpawnCommand());
         getCommand("spawn").setExecutor(new SpawnCommand());
