@@ -20,6 +20,11 @@ ITEM:
     MATERIAL: BOOK
     SLOT: 4
     NAME: "&6Servers"
+  ENDER_BUTT:
+    MATERIAL: ENDER_PEARL
+    SLOT: 3
+    NAME: "&bEnderButt"
+    SOUND: "PORTAL"
 
 GLASS_PANE:
   MATERIAL: STAINED_GLASS_PANE
@@ -27,11 +32,19 @@ GLASS_PANE:
   AMOUNT: 1
   VALUE: 15
 
+###
+SETTINGS:
+  ALWAYS_SUNNY: true
+  PING_MESSAGE: "&cYour ping: &f{ping}"
+  FLY_ENABLED: "&7[&c!&7] &aFlight has been enabled."
+  FLY_DISABLED: "&7[&c!&7] &cFlight has been disabled."
+
 ## MEDIA LINKS
 MEDIA_LINKS:
   WEBSITE: "&7&l%bullet_point% &aWebsite: &fwww.server.com"
   DISCORD: "&7&l%bullet_point% &aDiscord: &fdiscord.gg/server"
   STORE: "&7&l%bullet_point% &aStore: &fstore.server.com"
+
 ## WELCOME MESSAGE (PAPI SUPPORTED)
 WELCOME_MESSAGE:
   - "&7&m---------------------------------------"
@@ -74,13 +87,15 @@ SCOREBOARD:
     - "&7&ostore.server.com"
     - "&7&m-------------------"
 
+# Spawn Configuration
 Spawn:
   send:
     message: "&aSending you to spawn"
     sound: "PORTAL"
   void:
     enable: true
-    message: "&aSending to spawn"
+    message: "&aSending you to spawn"
+
 ```
     
 ![image](https://user-images.githubusercontent.com/67561225/115079998-a6db4300-9ec7-11eb-8116-183088e7fddb.png)
