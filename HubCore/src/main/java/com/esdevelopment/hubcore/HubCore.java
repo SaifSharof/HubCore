@@ -7,6 +7,7 @@ import com.esdevelopment.hubcore.scoreboard.*;
 import com.esdevelopment.hubcore.scoreboard.adapter.*;
 import com.esdevelopment.hubcore.server.*;
 import com.esdevelopment.hubcore.util.*;
+import lombok.Getter;
 import org.bukkit.*;
 import org.bukkit.plugin.java.*;
 
@@ -36,7 +37,7 @@ public class HubCore extends JavaPlugin {
 
         Assemble assemble = new Assemble(this, new ScoreboardAdapter());
         assemble.setTicks(2);
-        assemble.setAssembleStyle(AssembleStyle.LATEST);
+        assemble.setAssembleStyle(AssembleStyle.VIPER);
 
         if (getConfig().getBoolean("SETTINGS.ALWAYS_SUNNY")) {
             for(World world : this.getServer().getWorlds()) {
@@ -51,6 +52,7 @@ public class HubCore extends JavaPlugin {
                 new PlayerListener(),
                 new ServerSelector(),
                 new AlwaysDay(),
+                new EnderButt(),
                 new DoubleJump()
         ).forEach(listener -> Bukkit.getPluginManager().registerEvents(listener, this));
     }
@@ -63,7 +65,7 @@ public class HubCore extends JavaPlugin {
         getCommand("discord").setExecutor(new DiscordCommand());
         getCommand("store").setExecutor(new StoreCommand());
         getCommand("ping").setExecutor(new PingCommand());
-
+        getCommand("fly").setExecutor(new FlyCommand());
     }
 
     private void setupBungee() {
