@@ -12,7 +12,7 @@ public class PlayerCountThread extends Thread {
     public static int PLAYER_COUNT = 1;
 
     public PlayerCountThread() {
-        setName("veracity-count");
+        setName("hub-count");
     }
 
     @Override
