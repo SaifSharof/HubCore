@@ -45,11 +45,11 @@ public class ServerSelector implements Listener {
                         .replace("%bullet_point%", bullet_point))
                         .replace("%right_arrow%", right_arrow)
                         .replace("%left_arrow%", left_arrow)));
-                ItemStack practice = new ItemBuilder(Material.getMaterial(config.getString("SERVER_SELECTOR.SERVERS.1.MATERIAL")))
+                ItemStack destination = new ItemBuilder(Material.getMaterial(config.getString("SERVER_SELECTOR.SERVERS.1.MATERIAL")))
                         .setName(CC.translate(config.getString("SERVER_SELECTOR.SERVERS.1.NAME")))
                         .setLore(server_lore)
                         .create();
-                inventory.setItem(config.getInt("SERVER_SELECTOR.SERVERS.1.SLOT"), practice);
+                inventory.setItem(config.getInt("SERVER_SELECTOR.SERVERS.1.SLOT"), destination);
 
                 player.updateInventory();
             }
