@@ -12,6 +12,7 @@ public class AlwaysDay implements Listener {
         event.setCancelled(true);
 
         event.getWorld().setWeatherDuration(0);
+        event.getWorld().setTime(3000);
     }
 
 }
