@@ -19,7 +19,8 @@ commands:
     description: Sends the server's discord
   ping:
     description: Tells you your ping
-
+  fly:
+    description: Allows you to fly....
 
 permissions:
   hub.command.place:
@@ -36,4 +37,5 @@ permissions:
     description: Allows you to teleport to spawn
   hubcore.ping:
     description: Sends the player their ping
-
+  hubcore.fly:
+    description: Allows the player to fly.
