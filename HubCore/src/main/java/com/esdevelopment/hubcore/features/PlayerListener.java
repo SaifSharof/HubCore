@@ -25,7 +25,6 @@ public class PlayerListener implements Listener {
 
         player.getInventory().clear();
         player.getInventory().setArmorContents(null);
-
         if(LocationUtil.parseToLocation(config.getString("Spawn.location")) != null){
             player.teleport(LocationUtil.parseToLocation(config.getString("Spawn.location")));
 
@@ -37,6 +36,11 @@ public class PlayerListener implements Listener {
                 .setName(CC.translate(HubCore.get().getConfig().getString("ITEM.SERVER_SELECTOR.NAME")))
                 .create();
         player.getInventory().setItem(HubCore.get().getConfig().getInt("ITEM.SERVER_SELECTOR.SLOT"), server_selector);
+
+        ItemStack enderbutt = new ItemBuilder(Material.getMaterial(config.getString("ITEM.ENDER_BUTT.MATERIAL")))
+                .setName(CC.translate(HubCore.get().getConfig().getString("ITEM.ENDER_BUTT.NAME")))
+                .create();
+        player.getInventory().setItem(HubCore.get().getConfig().getInt("ITEM.ENDER_BUTT.SLOT"), enderbutt);
 
         for(int i = 0; i < 100; i++) { player.sendMessage(""); }
 
