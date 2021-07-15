@@ -21,6 +21,17 @@ commands:
     description: Tells you your ping
   fly:
     description: Allows you to fly....
+  gmc:
+    description: Sets your gamemode to Creative
+  gms:
+    description: Sets your gamemode to Survival
+  gmsp:
+    description: Sets your gamemode to Spectator
+  gma:
+    description: Sets your gamemode to Adventure
+  feed:
+    description: Feed yourself you fat prick.
+
 
 permissions:
   hub.command.place:
@@ -39,3 +50,13 @@ permissions:
     description: Sends the player their ping
   hubcore.fly:
     description: Allows the player to fly.
+  hubcore.gmc:
+    description: Set your gamemode to Creative.
+  hubcore.gms:
+    description: Set your gamemode to Survival
+  hubcore.gmsp:
+    description: Set your gamemode to Spectator
+  hubcore.adventure:
+    description: Set your gamemode to Adventure
+  hubcore.feed:
+    description: Feed yourself you obese prick.
