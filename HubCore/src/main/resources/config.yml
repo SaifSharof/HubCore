@@ -15,18 +15,30 @@ ITEM:
     NAME: "&bEnderButt"
     SOUND: "PORTAL"
 
+
 GLASS_PANE:
   MATERIAL: STAINED_GLASS_PANE
   NAME: " "
   AMOUNT: 1
   VALUE: 15
 
+LAUNCH_PAD:
+  MATERIAL: STONE_PLATE
+  SOUND: EXPLODE
 ###
 SETTINGS:
   ALWAYS_SUNNY: true
+
+## Messages sent to players after each command is executed.
+MESSAGES:
   PING_MESSAGE: "&cYour ping: &f{ping}"
   FLY_ENABLED: "&7[&c!&7] &aFlight has been enabled."
   FLY_DISABLED: "&7[&c!&7] &cFlight has been disabled."
+  FOOD-LEVEL: "&6You have been fed, Thank god right now."
+  CREATIVE: "&7Your GameMode has been set to &aCreative."
+  SURVIVAL: "&7Your GameMode has been set to &aSurvival."
+  SPECTATOR: "&7Your GameMode has been set to &aSpectator."
+  ADVENTURE: "&7Your GameMode has been set to &aAdventure."
 
 ## MEDIA LINKS
 MEDIA_LINKS:
