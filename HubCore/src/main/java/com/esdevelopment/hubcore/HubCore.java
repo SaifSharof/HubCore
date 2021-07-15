@@ -1,6 +1,9 @@
 package com.esdevelopment.hubcore;
 
-import com.esdevelopment.hubcore.commands.*;
+
+import com.esdevelopment.hubcore.commands.essentials.*;
+import com.esdevelopment.hubcore.commands.gamemode.*;
+import com.esdevelopment.hubcore.commands.spawn.*;
 import com.esdevelopment.hubcore.features.*;
 import com.esdevelopment.hubcore.media.*;
 import com.esdevelopment.hubcore.scoreboard.*;
@@ -42,6 +45,7 @@ public class HubCore extends JavaPlugin {
         if (getConfig().getBoolean("SETTINGS.ALWAYS_SUNNY")) {
             for(World world : this.getServer().getWorlds()) {
                 world.setWeatherDuration(0);
+                world.setTime(3000);
             }
         }
     }
@@ -53,6 +57,7 @@ public class HubCore extends JavaPlugin {
                 new ServerSelector(),
                 new AlwaysDay(),
                 new EnderButt(),
+                new LaunchPad(),
                 new DoubleJump()
         ).forEach(listener -> Bukkit.getPluginManager().registerEvents(listener, this));
     }
@@ -66,6 +71,11 @@ public class HubCore extends JavaPlugin {
         getCommand("store").setExecutor(new StoreCommand());
         getCommand("ping").setExecutor(new PingCommand());
         getCommand("fly").setExecutor(new FlyCommand());
+        getCommand("gmc").setExecutor(new CreativeMode());
+        getCommand("gms").setExecutor(new SurvivalMode());
+        getCommand("gmsp").setExecutor(new SpectatorMode());
+        getCommand("gma").setExecutor(new AdventureMode());
+        getCommand("feed").setExecutor(new FeedCommand());
     }
 
     private void setupBungee() {
